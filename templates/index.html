@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Symbol</th>
+                <th scope="col">Name</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <form action="/dirsell" method="post">
+                    <tr>
+                        <td><button name="symbol" class="btn btn-primary" type="submit" value="{{ row['symbol'] }}" style="width:100px">{{ row['symbol'] }}</button></td>
+                        <td>{{ row["share_name"] }}</td>
+                        <td>{{ row["share_qty"] }}</td>
+                        <td>{{ row["share_price"] }}</td>
+                        <td>{{ row["total"] }}</td>
+                    </tr>
+                </form>
+            {% endfor %}
+            <tr>
+                <td>CASH</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ balance }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><b>{{ grandT }}</b></td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
+
+

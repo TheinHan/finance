@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell {{ symbol }}
+{% endblock %}
+
+{% block main %}
+    <p>Are you sure you want to <b>SELL</b> all <b>{{ share_qty }} shares</b> of {{ share_name }} (<b>{{ symbol }}</b>) at price <b>$ {{ share_price }}</b> ?</p>
+    <form action="/confsell" method="post">
+        <button name="symbol" class="btn btn-primary" type="submit" value="{{ symbol }}" style="margin:50px; width:120px">Sell</button>
+        <button name="symbol" class="btn btn-primary" type="submit" value="cancel" style="margin:50px; width:120px">Cancel</button>
+    </form>
+{% endblock %}
+
+
+<!--
+
+"""<tbody>
+    <tr class='clickable-row' data-href='url://'>
+        <td>Blah Blah</td> <td>1234567</td> <td>£158,000</td>
+    </tr>
+</tbody>
+
+
+jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});
+
+-->
